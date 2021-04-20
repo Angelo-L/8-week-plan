@@ -8,6 +8,8 @@ var chunkStorage2 = [];
 var chunkStorageNumber = 20;
 var chunkPositions = [];
 
+console.log("Loading Started");
+
 function addToTable(){
 	var table = document.getElementById("table");
 	var newIndex = 2;
