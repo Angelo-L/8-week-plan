@@ -10,6 +10,46 @@ var chunkPositions = [];
 
 console.log("Loading Started");
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+function randomCoords() {
+	getRandomInt(0, 11);
+}
+
+function makeBlocksWithCoords(size) {
+	var x = 0;
+  var z = 0;
+  var block = [];
+
+	for ( var i = 1; i <= 4; ++i) {
+  	if (i == 1) {
+    	for (var i = 1; i <= size; ++i) {
+      	x = i
+        
+        block[i - 1] = [x, 0]
+        
+        console.log(block);
+      }
+    }
+    
+    if (i == 2) {
+    	for (var i = 1; i <= size; ++i) {
+      	z = i
+        
+        block[size - 1] = [0, z]
+        
+        console.log(block);
+      }
+    }
+  }
+}
+
+console.log(makeBlocksWithCoords(10));
+
 function addToTable(){
 	var table = document.getElementById("table");
 	var newIndex = 2;
@@ -17,19 +57,44 @@ function addToTable(){
   var newCell;
   var newRsowindex = 0;
   var chunkNameNum;
+  var newXCoords = -1;
+  var newYCoords = 0;
+  var newZCoords = -1;
+  
   
 	for (var i = 0; i <= newIndex; ++i) {
   	newRow = table.insertRow(i + 1);
     
     
-    for (var o = 0; o <= 0; ++o) {
+    for (var o = 0; o <= 3; ++o) {
     	newCell = newRow.insertCell(o);
       
       chunkNameNum = i + 1
       
-      newCell.innerHTML = "Chunk" + chunkNameNum;
+      
+      if (o == 0) {
+      	newCell.innerHTML = "Block" + chunkNameNum;
+      }
+      
+      if (o == 1) {
+      	newXCoords = newXCoords + 1
+        console.log(newXCoords);
+      	newCell.innerHTML = "" + newXCoords;
+      }
+      
+      if (o == 2) {
+      	newYCoords = newYCoords
+        console.log(newYCoords + "sdfsafd");
+      	newCell.innerHTML = "" + newYCoords;
+      }
+      
+      if (o == 3) {
+      	newZCoords = newZCoords + 1
+        console.log(newZCoords);
+      	newCell.innerHTML = "" + newZCoords;
+      }
+      
     }
-    
   }
 }
 
@@ -69,11 +134,7 @@ function splitIntoChunk(arr, num, chunkNum) {
     }
 }
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
+
 
 function ChunkHoldRandomizer (chunk, min, max){
 	for (o = 0; o < chunk.length; o++){
