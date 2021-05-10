@@ -25,27 +25,34 @@ function makeBlocksWithCoords(size) {
   var z = 0;
   var block = [];
 
-	for ( var i = 1; i <= 4; ++i) {
+	for ( var i = 1; i <= 4; i++) {
+  	console.log("sssdf" + i);
   	if (i == 1) {
-    	for (var i = 1; i <= size; ++i) {
-      	x = i
+    	for (var o = 1; o <= size; ++o) {
+      	x = o
         
-        block[i - 1] = [x, 0]
-        
-        console.log(block);
+        block[o - 1] = [x, 0]
       }
+      console.log("asfsdajfsd");
     }
     
+    console.log("sdjfsadjfsdja");
+    
     if (i == 2) {
-    	for (var i = 1; i <= size; ++i) {
-      	z = i
+      console.log("i -- 2");
+    	for (var y = 1; y <= size; ++y) {
+      	z = y
         
-        block[size - 1] = [0, z]
+        block[y + size - 1] = [0, z]
         
-        console.log(block);
+        
       }
     }
   }
+  
+  return[
+  	block
+  ];
 }
 
 console.log(makeBlocksWithCoords(10));
