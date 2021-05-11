@@ -24,31 +24,24 @@ function makeBlocksWithCoords(size) {
 	var x = 0;
   var z = 0;
   var block = [];
+  var blockNum = 0;
 
-	for ( var i = 1; i <= 4; ++i) {
-  	if (i == 1) {
-    	for (var i = 1; i <= size; ++i) {
-      	x = i
-        
-        block[i - 1] = [x, 0]
-        
-        console.log(block);
-      }
+	for (i = 0; i <= size; i++) {
+  	z = i
+    for (o = 0; o <= size; o++) {
+    	//console.log(o - size);
+    	x = o
+      block[o + blockNum] = [x, z]
     }
-    
-    if (i == 2) {
-    	for (var i = 1; i <= size; ++i) {
-      	z = i
-        
-        block[size - 1] = [0, z]
-        
-        console.log(block);
-      }
-    }
+    blockNum = blockNum + size + 1
   }
+
+  return[
+  	block
+  ];
 }
 
-console.log(makeBlocksWithCoords(10));
+console.log(makeBlocksWithCoords(40));
 
 function addToTable(){
 	var table = document.getElementById("table");
