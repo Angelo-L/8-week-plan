@@ -10,6 +10,7 @@ var chunkPositions = [];
 
 console.log("Loading Started");
 
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -21,6 +22,7 @@ function randomCoords() {
 }
 
 function makeBlocksWithCoords(size) {
+	var y = 64;
 	var x = 0;
   var z = 0;
   var block = [];
@@ -31,17 +33,15 @@ function makeBlocksWithCoords(size) {
     for (o = 0; o <= size; o++) {
     	//console.log(o - size);
     	x = o
-      block[o + blockNum] = [x, z]
+      block[o + blockNum] = {x,y,z}
     }
     blockNum = blockNum + size + 1
   }
 
-  return[
-  	block
-  ];
+  return block;
 }
 
-console.log(makeBlocksWithCoords(40));
+//console.log(makeBlocksWithCoords(16));
 
 function addToTable(){
 	var table = document.getElementById("table");
@@ -53,9 +53,17 @@ function addToTable(){
   var newXCoords = -1;
   var newYCoords = 0;
   var newZCoords = -1;
+  var blocks = makeBlocksWithCoords(16);
+  console.log("The length of blocks is" + blocks.length);
+  var newx = 0;
+  var newy = 0;
+  var newz = 0;
   
-  
-	for (var i = 0; i <= newIndex; ++i) {
+  for (var i = 0; i < blocks.length; i++) {
+  	newx = blocks[i].x
+    newy = blocks[i].y
+    newz = blocks[i].z
+    //console.log(newx);
   	newRow = table.insertRow(i + 1);
     
     
@@ -70,20 +78,20 @@ function addToTable(){
       }
       
       if (o == 1) {
-      	newXCoords = newXCoords + 1
-        console.log(newXCoords);
+      	newXCoords = newx
+        //console.log(newXCoords);
       	newCell.innerHTML = "" + newXCoords;
       }
       
       if (o == 2) {
-      	newYCoords = newYCoords
-        console.log(newYCoords + "sdfsafd");
+      	newYCoords = newy
+        //console.log(newYCoords + "sdfsafd");
       	newCell.innerHTML = "" + newYCoords;
       }
       
       if (o == 3) {
-      	newZCoords = newZCoords + 1
-        console.log(newZCoords);
+      	newZCoords = newz
+        //console.log(newZCoords);
       	newCell.innerHTML = "" + newZCoords;
       }
       
